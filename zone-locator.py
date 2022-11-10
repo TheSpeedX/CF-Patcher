@@ -1,9 +1,12 @@
 import requests
 
+DOMAIN = "example.com"
+EMAIL = "email@mail.com"
+API_KEY = "api_key"
 
 headers = {
-    "X-Auth-Email": "email",
-    "X-Auth-Key": "api_key",
+    "X-Auth-Email": EMAIL,
+    "X-Auth-Key": API_KEY,
 }
 
 
@@ -22,10 +25,9 @@ def get_dns_records(zone_id):
     return response.json()["result"]
 
 
-domain = "example.com"
 zones = get_zones()
 for zone in zones:
-    if zone["name"] == domain:
+    if zone["name"] == DOMAIN:
         print("ZONE ID: ", zone["id"])
         records = get_dns_records(zone["id"])
         for record in records:
