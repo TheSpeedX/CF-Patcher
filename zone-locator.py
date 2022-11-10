@@ -3,7 +3,7 @@ import requests
 
 headers = {
     "X-Auth-Email": "email",
-    "X-Auth-Key": "key",
+    "X-Auth-Key": "api_key",
 }
 
 
@@ -29,5 +29,5 @@ for zone in zones:
         print("ZONE ID: ", zone["id"])
         records = get_dns_records(zone["id"])
         for record in records:
-            print(record["name"], record["id"])
+            print(record["type"], record["name"], record["id"])
         break
