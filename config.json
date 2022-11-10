@@ -1,0 +1,41 @@
+[
+    {
+        "api_key": "",
+        "email": "",
+        "zone_id": "1",
+        "variables": ["public_ip"],
+        "dns_records": [
+            {
+                "id": "1",
+                "value": {
+                    "type": "A",
+                    "name": "example.com",
+                    "content": "0.0.0.0",
+                    "ttl": 120,
+                    "proxied": false
+                }
+            },
+            {
+                "id": "5",
+                "value": {
+                    "content": "{{public_ip}}",
+                    "proxied": true
+                }
+            }
+        ]
+    },
+    {
+        "api_key": "",
+        "email": "",
+        "zone_id": "5",
+        "variables": ["public_ip"],
+        "dns_records": [
+            {
+                "id": "5",
+                "value": {
+                    "content": "{{public_ip}}"
+                }
+            }
+        ]
+    }
+]
