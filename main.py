@@ -62,6 +62,7 @@ def main():
                 patcher.load_variables()
                 patcher.patch_dns_records()
             last_ip = curr_ip
+        print("Sleeping for 15 minutes")
         time.sleep(60 * 15)
 
 
