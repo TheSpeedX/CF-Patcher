@@ -26,17 +26,19 @@ class CloudflarePatcher:
         self.zone_id = account["zone_id"]
 
     def load_variables(self):
-        self.variables = {}
-        for variable in self.account["variables"]:
-            self.variables[variable] = globals()[f"get_{variable}"]()
-        print("New Variables:", self.variables)
+        variables = {
+            variable: globals()[f"get_{variable}"]()
+            for variable in self.account["variables"]
+        }
+
+        print("New Variables:", variables)
+        return variables
 
     def parse_record(self, record):
         record_str = json.dumps(record)
-        for variable in self.variables:
-            record_str = record_str.replace(
-                "{{" + variable + "}}", self.variables[variable]
-            )
+        variables = self.load_variables()
+        for variable in variables:
+            record_str = record_str.replace("{{" + variable + "}}", variables[variable])
         return json.loads(record_str)
 
     def patch_dns_records(self):
@@ -59,7 +61,6 @@ def main():
         if curr_ip != last_ip:
             for account in config:
                 patcher = CloudflarePatcher(account)
-                patcher.load_variables()
                 patcher.patch_dns_records()
             last_ip = curr_ip
         print("Sleeping for 15 minutes")
