@@ -40,3 +40,11 @@ Take a note of ZONE ID and the DNS RECORD ID if you wanna update.
 config.json:
 1. Enter your email, zone_id, api_key, dns_record id and whatever domain/subdomain you wanna regulary update.
 2. Save it and start building the container
+
+## Change IP Check time
+
+The IP check is set to 15min. 
+This can be adjusted in main.py under the variable:
+
+> print("Sleeping for 15 minutes")
+> time.sleep(60 * 15)
