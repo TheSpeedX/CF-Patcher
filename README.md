@@ -1,8 +1,7 @@
 # CF-Patcher
 
-CF patchers were written by my colleague SpeedX.
-
-CF-Patcher allows updating the DNS entries even if a Dynamic IP is given. Also better known as DynDNS.
+CF-Patcher allows updating the DNS entries even if a Dynamic IP is given. 
+Also better known as DynDNS.
 
 ## Requirements
 
